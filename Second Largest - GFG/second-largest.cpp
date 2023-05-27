@@ -13,30 +13,21 @@ public:
 	    int max,max2,flag=0;
 	    max=INT_MIN;
 	    
-	    for(int i=0;i<n;i++)
+	   for (int i=0;i<n;i++)
 	    {
-	        if(arr[i]!=arr[0])
-	        {flag=1;}
+	        if(arr[i]>max) max=arr[i]; 
 	    }
-	    if(flag==1)
+	    max2=INT_MIN;
+	    for(int j=0;j<n;j++)
 	    {
-	        for (int i=0;i<n;i++)
-    	    {
-    	        if(arr[i]>max) max=arr[i]; 
-    	    }
-    	    max2=INT_MIN;
-    	    for(int j=0;j<n;j++)
-    	    {
-    	        
-    	           if(arr[j]!=max)
-    	            {
-    	            if(arr[j]>max2) max2=arr[j];
-    	            }  
-    	        
-    	       
-    	    }
-	    }
-	    else if(flag==0) max2=(-1);
+	        if(arr[j]!=max)
+            {
+                if(arr[j]>max2) max2=arr[j];
+                flag=1;
+            } 
+    }
+	    if(flag==0) max2=-1;
+	   
 	    return max2;
 	}
 };
