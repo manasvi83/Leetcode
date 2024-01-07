@@ -10,8 +10,14 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head,ListNode *nextnode=NULL,ListNode *prevnode=NULL) {
-        return head? reverseList(head->next,(head->next=prevnode,nextnode),head) :prevnode;
-        
+    ListNode* reverseList(ListNode* head){
+        ListNode *prevnode=NULL,*nextnode;
+        while(head){
+            nextnode=head->next;
+            head->next=prevnode;
+            prevnode=head;
+            head=nextnode;
+        }
+        return prevnode;
     }
 };
