@@ -10,44 +10,21 @@
  */
 class Solution {
 public:
-     ListNode* mid(ListNode* head) {
-        ListNode* slow = head;
-        ListNode* fast = head->next;
-        while(fast != NULL && fast->next != NULL) {
-            slow = slow->next;
-            fast = fast->next->next;
-        }
-        return slow;
-    }
-    
-    ListNode* merge(ListNode* l1, ListNode* l2) {
-        ListNode* dummyNode = new ListNode(0);
-        ListNode* temp = dummyNode;
-        while(l1 != NULL && l2 != NULL) {
-            if(l1->val < l2->val) {
-                temp->next = l1;
-                temp = l1;
-                l1 = l1->next;
-            } else {
-                temp->next = l2;
-                temp = l2;
-                l2 = l2->next;
-            }
-        }
-        if(l1) temp->next = l1;
-        if(l2) temp->next = l2;
-        return dummyNode->next;
-    }
-
-    
     ListNode* sortList(ListNode* head) {
-        if(head == NULL || head->next == NULL) return head;
-        ListNode* leftHalf = head;
-        ListNode* middle = mid(head);
-        ListNode* rightHalf = middle->next;
-        middle->next = nullptr;
-        leftHalf = sortList(leftHalf);
-        rightHalf = sortList(rightHalf);
-        return merge(leftHalf, rightHalf);
+        ListNode* curr=head;
+        vector<int> arr;
+        while(curr!=NULL){
+            arr.push_back(curr->val);
+            curr=curr->next;
+        }
+        sort(arr.begin(),arr.end());
+        int i=0;
+        ListNode* curr2=head;
+        while(curr2!=NULL){
+            curr2->val=arr[i];
+                i++;
+            curr2=curr2->next;
+        }
+        return head;
     }
 };
