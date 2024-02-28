@@ -5,7 +5,7 @@ public:
         bool append = false; 
         string res = ""; 
         for (int i = len - 1; i >=0; i--){
-            if((num[i] - '0')&1) 
+            if((num[i] - '0')&1) // convert string to int
                 append = true; 
             if (append)
                 res+=num[i]; 
