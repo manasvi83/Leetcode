@@ -10,42 +10,21 @@
  * };
  */
 class Solution {
+private:
+    int sum = 0;
+
+    void traverse(TreeNode* root) {
+        if (root) {
+            traverse(root->right);  // Traverse the right subtree
+            sum += root->val;  // Update the sum
+            root->val = sum;  // Update the current node's value
+            traverse(root->left);  // Traverse the left subtree
+        }
+    }
+
 public:
-    int max;
-    bool first = true;
     TreeNode* bstToGst(TreeNode* root) {
-        right(root->right);
-        root->val += max;
-        max = root->val;
-        left(root->left);
+        traverse(root);
         return root;
-    }
-    
-    void right(TreeNode* root){
-        if(root == nullptr){
-            return; 
-        }
-        else if(root->left == nullptr && root->right == nullptr){
-            max = max > root->val ? max : root->val;
-        }
-        right(root->right);
-        if(first){
-            first = false;
-        }
-        else{
-            root->val += max;
-            max = root->val;
-        }
-        right(root->left);
-    }
-    
-    void left(TreeNode* root){
-        if(root == nullptr){
-            return;
-        }
-        left(root->right);
-        root->val += max;
-        max = root->val;
-        left(root->left);
     }
 };
