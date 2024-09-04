@@ -5,8 +5,8 @@ public:
         int sum=0;
         int i=0,j=n-1;
         int lmax=0,rmax=0;
-        for(int i=0;i<n;i++)
-        {
+        // for(int i=0;i<n;i++)
+        // {
             while(i<=j)
             {
                 if(height[i]<height[j])
@@ -31,7 +31,7 @@ public:
                 }
                 
             }
-        }
+        // }
             return sum;
     }
 };
